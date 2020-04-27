@@ -51,6 +51,7 @@ public class Controller {
 
     public void download(ActionEvent event) {
         String url = urlField.getText().trim();
+        String filename = url.substring(url.lastIndexOf('/') + 1);
 
         ChangeListener<Long> listener = (observable, oldValue, newValue) -> {
             cancelButton.setVisible(true);
@@ -67,7 +68,7 @@ public class Controller {
 
             Optional<ButtonType> result = alert.showAndWait();
             if (result.isPresent() && result.get() == ButtonType.OK) {
-                out = new File(System.getProperty("user.home") + "\\asd.exe");
+                out = new File(System.getProperty("user.home") + "\\" + filename);
                 saveField.setText(out.getPath());
                 try {
                     worker = new DownloadTask(new URL(url), out);
@@ -114,8 +115,11 @@ public class Controller {
     }
 
     public void browse(ActionEvent event) {
+        String url = urlField.getText().trim();
+        String filename = url.substring(url.lastIndexOf("/") + 1);
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save As");
+        fileChooser.setInitialFileName(filename);
         out = fileChooser.showSaveDialog(new Stage());
         try {
             saveField.setText(out.getPath());
