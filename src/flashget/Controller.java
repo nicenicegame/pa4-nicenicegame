@@ -47,6 +47,8 @@ public class Controller {
         browseButton.setOnAction(this::browse);
         clearButton.setOnAction(this::clear);
         cancelButton.setOnAction(this::cancel);
+        urlField.setOnMouseClicked(mouseEvent -> urlField.setStyle("-fx-border-color: transparent"));
+        saveField.setOnMouseClicked(mouseEvent -> saveField.setStyle("-fx-border-color: transparent"));
     }
 
     public void download(ActionEvent event) {
@@ -76,9 +78,7 @@ public class Controller {
                     System.err.println(e.getMessage());
                 }
             }
-        }
-
-        if (!urlField.getText().isEmpty() && !saveField.getText().isEmpty()) {
+        } else if (!urlField.getText().isEmpty() && !saveField.getText().isEmpty()) {
             try {
                 worker = new DownloadTask(new URL(url), out);
                 progressBar.progressProperty().bind(worker.progressProperty());
@@ -99,6 +99,11 @@ public class Controller {
             } catch (MalformedURLException e) {
                 System.err.println(e.getMessage());
             }
+        } else if (urlField.getText().isEmpty() && !saveField.getText().isEmpty()) {
+            urlField.setStyle("-fx-border-color: red");
+        } else {
+            urlField.setStyle("-fx-border-color: red");
+            saveField.setStyle("-fx-border-color: red");
         }
     }
 
@@ -130,5 +135,7 @@ public class Controller {
     public void clear(ActionEvent event) {
         urlField.clear();
         saveField.clear();
+        urlField.setStyle("-fx-border-color: transparent");
+        saveField.setStyle("-fx-border-color: transparent");
     }
 }
