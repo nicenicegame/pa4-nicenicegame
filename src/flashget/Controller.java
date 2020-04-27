@@ -1,12 +1,9 @@
 package flashget;
 
 import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.concurrent.Worker;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -19,9 +16,6 @@ public class Controller {
     private File out;
 
     private DownloadTask worker;
-
-    @FXML
-    private VBox vBox;
 
     @FXML
     private Label percentLabel;
@@ -42,25 +36,27 @@ public class Controller {
     private Button browseButton;
 
     @FXML
+    private Button clearButton;
+
+    @FXML
     private Button cancelButton;
 
     @FXML
     public void initialize() {
         downloadButton.setOnAction(this::download);
         browseButton.setOnAction(this::browse);
+        clearButton.setOnAction(this::clear);
         cancelButton.setOnAction(this::cancel);
     }
 
     public void download(ActionEvent event) {
         String url = urlField.getText().trim();
 
-        ChangeListener<Long> listener = new ChangeListener<Long>() {
-            @Override
-            public void changed(ObservableValue<? extends Long> observable, Long oldValue, Long newValue) {
-                progressBar.setVisible(true);
-                percentLabel.setVisible(true);
-                percentLabel.setText(newValue + "%");
-            }
+        ChangeListener<Long> listener = (observable, oldValue, newValue) -> {
+            cancelButton.setVisible(true);
+            progressBar.setVisible(true);
+            percentLabel.setVisible(true);
+            percentLabel.setText(newValue.toString() + "%");
         };
 
         if (!urlField.getText().isEmpty() && saveField.getText().isEmpty()) {
@@ -70,8 +66,9 @@ public class Controller {
             alert.setContentText("The downloaded file will be saved in system properties.");
 
             Optional<ButtonType> result = alert.showAndWait();
-            if (result.get() == ButtonType.OK) {
-                out = new File(System.getProperty("user.home"));
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                out = new File(System.getProperty("user.home") + "\\asd.exe");
+                saveField.setText(out.getPath());
                 try {
                     worker = new DownloadTask(new URL(url), out);
                 } catch (MalformedURLException e) {
@@ -80,14 +77,27 @@ public class Controller {
             }
         }
 
-        try {
-            worker = new DownloadTask(new URL(url), out);
-            progressBar.progressProperty().bind(worker.progressProperty());
-            worker.valueProperty().addListener(listener);
-            new Thread(worker).start();
-        } catch (NullPointerException ignored) {
-        } catch (MalformedURLException e) {
-            System.err.println(e.getMessage());
+        if (!urlField.getText().isEmpty() && !saveField.getText().isEmpty()) {
+            try {
+                worker = new DownloadTask(new URL(url), out);
+                progressBar.progressProperty().bind(worker.progressProperty());
+                worker.valueProperty().addListener(listener);
+                new Thread(worker).start();
+
+                worker.setOnRunning(workerStateEvent -> {
+                    downloadButton.setDisable(true);
+                    clearButton.setDisable(true);
+                });
+
+                worker.setOnSucceeded(workerStateEvent -> {
+                    cancelButton.setText("OK");
+                    percentLabel.setText("Finished!");
+                });
+
+            } catch (NullPointerException ignored) {
+            } catch (MalformedURLException e) {
+                System.err.println(e.getMessage());
+            }
         }
     }
 
@@ -96,6 +106,11 @@ public class Controller {
             worker.cancel();
         } catch (NullPointerException ignored) {
         }
+        downloadButton.setDisable(false);
+        clearButton.setDisable(false);
+        progressBar.setVisible(false);
+        percentLabel.setVisible(false);
+        cancelButton.setVisible(false);
     }
 
     public void browse(ActionEvent event) {
@@ -108,4 +123,8 @@ public class Controller {
         }
     }
 
+    public void clear(ActionEvent event) {
+        urlField.clear();
+        saveField.clear();
+    }
 }

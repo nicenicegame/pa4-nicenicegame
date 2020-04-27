@@ -6,14 +6,18 @@ import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
 
-public class DownloadTask extends Task<Long> implements Downloader {
+public class MultiDownloadTask extends Task<Long> implements Downloader {
 
-    private final URL url;
-    private final File outfile;
+    private URL url;
+    private File outfile;
+    private long start;
+    private long size;
 
-    public DownloadTask(URL url, File outfile) {
+    public MultiDownloadTask(URL url, File outfile, long start, long size) {
         this.url = url;
         this.outfile = outfile;
+        this.start = start;
+        this.size = size;
     }
 
     @Override
