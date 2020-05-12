@@ -254,9 +254,8 @@ public class Controller {
     public void browse(ActionEvent event) {
         String url = urlField.getText().trim();
         String filename = url.substring(url.lastIndexOf('/') + 1);
-        String fileExt = filename.substring(filename.lastIndexOf('.'));
         FileChooser fileChooser = new FileChooser();
-        FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("All files", "*" + fileExt);
+        FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("All files", "*");
         fileChooser.getExtensionFilters().add(extensionFilter);
         fileChooser.setInitialFileName(filename);
         fileChooser.setTitle("Save As");
