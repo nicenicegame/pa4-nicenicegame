@@ -1,0 +1,22 @@
+# This file contains patterns for files that you
+# should NOT check in to the git repository.
+*.class
+bin/
+build/
+../lab13-nicenicegame/out/
+.DS_[Ss]tore
+*.log
+# Python files
+__pycache__
+*.pyc
+# IDE files
+.idea
+*.iml
+*.ctxt
+.classpath
+classpath
+.settings
+.project
+.nbproject
+.vscode
+vscode
