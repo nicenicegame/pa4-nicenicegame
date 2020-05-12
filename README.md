@@ -36,7 +36,7 @@ There will be the confirmation dialog for confirmation.
 
 * You can choose the path by click Browse [ ... ] button
 
-* If you let the URL field empty before click Download button or enter a invalid URL, it will be an error prompt.
+* If you let the URL field empty before click Download button or enter an invalid URL, it will be an error prompt show up.
 
 ![Error Dialog](src/images/Error.png)
 
