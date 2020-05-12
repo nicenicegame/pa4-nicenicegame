@@ -7,10 +7,15 @@ FlashGet is a downloader app with GUI that can download a file from url and can 
 ***
 
 ### Interface
+
 A normal interface.
+
+
 ![FlashGet Interface](src/images/interface.png)
 
 When downloading.
+
+
 ![FlashGet Interface Downloading](src/images/Downloading.png)
 
 - **URL Field** to enter the url of the file.
