@@ -5,27 +5,25 @@
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="194.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flashget.Controller">
+<AnchorPane prefHeight="184.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flashget.Controller">
    <children>
-      <Label id="urlLabel" layoutX="100.0" layoutY="24.0" text="URL" />
-      <Label id="saveLabel" layoutX="80.0" layoutY="72.0" text="Save As" />
-      <TextField fx:id="urlField" layoutX="132.0" layoutY="19.0" prefHeight="26.0" prefWidth="363.0" />
-      <TextField fx:id="saveField" layoutX="132.0" layoutY="67.0" prefHeight="26.0" prefWidth="363.0" />
-      <Button fx:id="downloadButton" layoutX="163.0" layoutY="110.0" mnemonicParsing="false" onAction="#download" prefHeight="26.0" prefWidth="150.0" text="Download" />
-      <Button fx:id="browseButton" layoutX="505.0" layoutY="68.0" mnemonicParsing="false" onAction="#browse" text="..." />
-      <Button fx:id="cancelButton" layoutX="491.0" layoutY="110.0" mnemonicParsing="false" onAction="#cancel" prefHeight="26.0" prefWidth="75.0" text="Cancel" visible="false" />
-      <VBox fx:id="vBox" alignment="CENTER" layoutY="146.0" prefHeight="46.0" prefWidth="600.0">
-         <children>
-            <AnchorPane prefHeight="50.0" prefWidth="600.0">
-               <children>
-                  <ProgressBar fx:id="progressBar" layoutX="56.0" layoutY="14.0" prefHeight="19.0" prefWidth="414.0" progress="0.0" visible="false" />
-                  <Label fx:id="percentLabel" layoutX="489.0" layoutY="14.0" prefHeight="18.0" prefWidth="75.0" text="0%" visible="false" />
-               </children>
-            </AnchorPane>
-         </children>
-      </VBox>
-      <Button fx:id="clearButton" layoutX="352.0" layoutY="110.0" mnemonicParsing="false" onAction="#clear" prefHeight="26.0" prefWidth="90.0" text="Clear" />
+      <Label id="urlLabel" layoutX="22.0" layoutY="22.0" text="URL to Download" />
+      <Label id="saveLabel" layoutX="74.0" layoutY="59.0" text="Save As" />
+      <TextField fx:id="urlField" layoutX="125.0" layoutY="18.0" prefHeight="26.0" prefWidth="350.0" promptText="Place URL Here ..." />
+      <TextField fx:id="saveField" layoutX="125.0" layoutY="55.0" prefHeight="26.0" prefWidth="350.0" promptText="Choose Path ..." />
+      <Button fx:id="downloadButton" layoutX="201.0" layoutY="93.0" mnemonicParsing="false" onAction="#download" prefHeight="26.0" prefWidth="198.0" text="Download" />
+      <Button fx:id="browseButton" layoutX="491.0" layoutY="55.0" mnemonicParsing="false" onAction="#browse" text="..." />
+      <Button fx:id="cancelButton" layoutX="503.0" layoutY="134.0" mnemonicParsing="false" onAction="#cancel" prefHeight="26.0" prefWidth="75.0" text="Cancel" visible="false" />
+      <Button fx:id="clearButton" layoutX="491.0" layoutY="18.0" mnemonicParsing="false" onAction="#clear" prefHeight="26.0" prefWidth="50.0" text="Clear" />
+      <Label fx:id="filenameLabel" alignment="CENTER_RIGHT" layoutX="7.0" layoutY="129.0" prefHeight="18.0" prefWidth="110.0" text="Filename" visible="false" />
+      <ProgressBar fx:id="bar1" layoutX="125.0" layoutY="155.0" prefWidth="70.0" progress="0.0" visible="false" />
+      <ProgressBar fx:id="bar2" layoutX="195.0" layoutY="155.0" prefWidth="70.0" progress="0.0" visible="false" />
+      <ProgressBar fx:id="bar3" layoutX="264.0" layoutY="155.0" prefWidth="70.0" progress="0.0" visible="false" />
+      <ProgressBar fx:id="bar4" layoutX="334.0" layoutY="155.0" prefWidth="70.0" progress="0.0" visible="false" />
+      <ProgressBar fx:id="bar5" layoutX="404.0" layoutY="155.0" prefWidth="70.0" progress="0.0" visible="false" />
+      <ProgressBar fx:id="progressBar" layoutX="125.0" layoutY="129.0" prefHeight="19.0" prefWidth="350.0" progress="0.0" visible="false" />
+      <Label fx:id="progressLabel" alignment="TOP_CENTER" layoutX="126.0" layoutY="129.0" prefHeight="18.0" prefWidth="350.0" text="Downloading ..." visible="false" />
+      <Label fx:id="threadLabel" layoutX="74.0" layoutY="155.0" text="Thread:" visible="false" />
    </children>
 </AnchorPane>

@@ -6,18 +6,14 @@ import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
 
-public class MultiDownloadTask extends Task<Long> implements Downloader {
+public class DownloadTaskTest extends Task<Long> implements Downloader {
 
-    private URL url;
-    private File outfile;
-    private long start;
-    private long size;
+    private final URL url;
+    private final File outfile;
 
-    public MultiDownloadTask(URL url, File outfile, long start, long size) {
+    public DownloadTaskTest(URL url, File outfile) {
         this.url = url;
         this.outfile = outfile;
-        this.start = start;
-        this.size = size;
     }
 
     @Override
@@ -50,7 +46,6 @@ public class MultiDownloadTask extends Task<Long> implements Downloader {
             }
             in.close();
             out.close();
-            updateProgress(downloaded, length);
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }

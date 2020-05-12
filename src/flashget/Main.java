@@ -17,7 +17,8 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("UI.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Fake IDM By nicenicegame");
+        primaryStage.setResizable(false);
+        primaryStage.setTitle("FlashGet");
         primaryStage.show();
     }
 }
