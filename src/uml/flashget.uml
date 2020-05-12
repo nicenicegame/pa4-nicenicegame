@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>flashget</OriginalElement>
+  <nodes>
+    <node x="150.6" y="0.0">flashget.DownloadTask</node>
+    <node x="766.225" y="0.0">flashget.view</node>
+    <node x="571.225" y="0.0">flashget.Main</node>
+    <node x="0.0" y="254.0">flashget.DownloaderFactory</node>
+    <node x="118.225" y="464.0">flashget.Controller</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="flashget.DownloaderFactory" target="flashget.DownloadTask">
+      <point x="-85.5" y="-80.0" />
+      <point x="85.5" y="229.0" />
+      <point x="180.975" y="229.0" />
+      <point x="-91.125" y="102.0" />
+    </edge>
+    <edge source="flashget.Controller" target="flashget.DownloadTask">
+      <point x="0.0" y="-323.0" />
+      <point x="322.225" y="439.0" />
+      <point x="352.5" y="439.0" />
+      <point x="352.5" y="229.0" />
+      <point x="302.475" y="229.0" />
+      <point x="30.375" y="102.0" />
+    </edge>
+    <edge source="flashget.Controller" target="flashget.DownloaderFactory">
+      <point x="-136.0" y="-323.0" />
+      <point x="186.225" y="439.0" />
+      <point x="171.0" y="439.0" />
+      <point x="0.0" y="80.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.8" x="589.4464285714291" y="315.9047619047619" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

@@ -16,7 +16,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * Controller class for control the event and UI of the app.
+ * Controller class for handle the event and UI of the app.
  *
  * @author Tatpol Samakpong.
  */
