@@ -49,7 +49,7 @@ There will be the confirmation dialog for confirmation.
 Type below syntax in the command line:
 
 `
-java --module-path="[path to javafx lib]" --add-modules javafx.controls -jar FlashGet.jar
+java --module-path="[path to javafx lib]" --add-modules javafx.controls,javafx.fxml,javafx.graphics -jar FlashGet.jar
 `
 
 #### How to use.
