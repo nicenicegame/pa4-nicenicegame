@@ -26,12 +26,12 @@ public class Main extends Application {
     /**
      * Initialize the view of FlashGet from fxml file.
      *
-     * @param primaryStage to show the stage.
+     * @param primaryStage to show the stage as window.
      * @throws Exception when cannot load fxml file.
      */
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("UI.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("view/UI.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
